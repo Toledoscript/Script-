@@ -1,0 +1,40 @@
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+
+local Window = Library:NewWindow("Like Or Pass")
+local Tab = Window:NewSection("Main")
+
+Tab:CreateButton("inf money (OP)", function()
+
+game:GetService("ReplicatedStorage").Events.PurchaseTroll:InvokeServer({["ItemName"] = "0/10",["Key"] = "x11",["Cash"] = -999999999999999999})
+
+end)
+
+local Tab = Window:NewSection("Cridet")
+
+Tab:CreateButton("Toledo", function()
+
+
+
+end)
+
+Tab:CreateButton("script maker: Toledo_Channeld", function()
+
+
+
+end)
+Tab:CreateButton("Rabbid Bojo", function()
+
+
+
+end)
+Tab:CreateButton("Official Banana", function()
+
+
+
+end)
+
+Tab:CreateButton("Agent", function()
+
+
+
+end)
