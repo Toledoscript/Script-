@@ -1,0 +1,167 @@
+local player = game.Players.LocalPlayer
+
+local speed = 1
+local doSpeed = false
+
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "🟣ScriptHub🟣",
+	LoadingTitle = " Snake Simulator / Eat blobs simulator",
+	LoadingSubtitle = "By Toledo_Channels",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "Math Race Hub"
+	},
+	Discord = {
+		Enabled = true,
+		Invite = "nVzscMyQ", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+		RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+	},
+	KeySystem = false, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "scriptHub Exploit",
+		Subtitle = "Key System",
+		Note = "Key In Discord Server: https://discord.gg/nVzscMyQ",
+		FileName = "YoutubeHubKey1", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = {""} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+	}
+})
+
+local MainTab = Window:CreateTab("🏠 Home", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+	Title = "You executed the script",
+	Content = "Thank you so much for using my script!",
+	Duration = 5,
+	Image = 13047715178,
+	Actions = { -- Notification Buttons
+		Ignore = {
+			Name = "Okay!",
+			Callback = function()
+				print("The user tapped Okay!")
+			end
+		},
+	},
+})
+
+local Slider = MainTab:CreateSlider({
+	Name = "WalkSpeed Slider",
+	Range = {1, 49},
+	Increment = 1,
+	Suffix = "Speed",
+	CurrentValue = 16,
+	Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		speed = (Value)
+	end,
+})
+
+
+function onSpeed()
+
+	if doSpeed == true then
+		 
+		if player.Character then player.Character.Humanoid.WalkSpeed = speed end	
+		
+	end
+
+end
+
+
+local Toggle = MainTab:CreateToggle({
+	Name = "Toggle Speed",
+	CurrentValue = false,
+	Flag = "Toggle1",
+	Callback = function(Value)
+		-- Jeśli `Value` jest true, rozpoczynamy autofarm
+		doSpeed = Value
+		
+	end,
+})
+
+
+
+local Toggle = MainTab:CreateToggle({
+	Name = "VIP Door Collision",
+	CurrentValue = true,
+	Flag = "Toggle1",
+	Callback = function(Value)
+		-- Jeśli `Value` jest true, rozpoczynamy autofarm
+		workspace["VIP door"].CanCollide = Value
+
+	end,
+})
+
+local Toggle = MainTab:CreateToggle({
+	Name = "Wall Collision",
+	CurrentValue = true,
+	Flag = "Toggle1",
+	Callback = function(Value)
+		-- Jeśli `Value` jest true, rozpoczynamy autofarm
+		for i,v in ipairs(workspace.VIPZone.VipWalls:GetChildren()) do
+			
+			v.CanCollide = Value
+			
+		end
+		for i,v in ipairs(workspace.Walls:GetChildren()) do
+
+			v.CanCollide = Value
+
+		end
+		
+
+	end,
+})
+
+local Button = MainTab:CreateButton({
+	Name = "(NEW) Get very far range (3999 Robux gamepass)",
+	Callback = function()
+		game.ReplicatedStorage.Honeypot.Internal.RemoteStorage["BlackHoleGamepass - RemoteEvent"]:FireServer()
+	end,
+})
+
+local Button = MainTab:CreateButton({
+	Name = "(NEW) Get magnet (299 Robux gamepass)",
+	Callback = function()
+		game.ReplicatedStorage.Honeypot.Internal.RemoteStorage["MagnetGamepass - RemoteEvent"]:FireServer()
+	end,
+})
+
+local CreditsTab = Window:CreateTab("👤 Credits", nil) -- Title, Image
+local Button = CreditsTab:CreateButton({
+	Name = "Official Banana",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Rabbid Bojo",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "AgentScriptor",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Script made by Toledo_Channels",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Discord: https://discord.gg/nVzscMyQ",
+	Callback = function()
+	end,
+})
+
+while wait() do
+
+	onSpeed()
+
+end
