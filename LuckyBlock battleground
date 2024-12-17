@@ -1,0 +1,96 @@
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+
+local Window = Library:NewWindow("LuckyBlock battleground")
+
+local Tab = Window:NewSection("LuckyBlock Spawner")
+
+Tab:CreateButton("Normal LuckyBlock", function()
+
+game.ReplicatedStorage.SpawnLuckyBlock:FireServer()
+
+end)
+
+Tab:CreateButton("Super LuckyBlock", function()
+
+game.ReplicatedStorage.SpawnSuperBlock:FireServer()
+
+end)
+
+Tab:CreateButton("Diamond LuckyBlock", function()
+
+game.ReplicatedStorage.SpawnDiamondBlock:FireServer()
+
+end)
+
+Tab:CreateButton("Rainbow LuckyBlock", function()
+
+game.ReplicatedStorage.SpawnRainbowBlock:FireServer()
+
+end)
+
+Tab:CreateButton("Galaxy LuckyBlock", function()
+
+game.ReplicatedStorage.SpawnGalaxyBlock:FireServer()
+
+end)
+
+local Tab = Window:NewSection("Misc")
+
+Tab:CreateButton("fly v3", function()
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+
+end)
+
+Tab:CreateButton("teleport tools", function()
+
+mouse = game.Players.LocalPlayer:GetMouse()
+tool = Instance.new("Tool")
+tool.RequiresHandle = false
+tool.Name = "Toledo TpTools"
+tool.Activated:connect(function()
+local pos = mouse.Hit+Vector3.new(0,2.5,0)
+pos = CFrame.new(pos.X,pos.Y,pos.Z)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+end)
+tool.Parent = game.Players.LocalPlayer.Backpack
+
+end)
+
+Tab:CreateButton("inf yield", function()
+
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()
+
+end)
+
+local Tab = Window:NewSection("Cridets")
+
+Tab:CreateButton("Toledo", function()
+
+
+
+end)
+
+Tab:CreateButton("Rabbid Bojo", function()
+
+
+
+end)
+
+Tab:CreateButton("Yt Toledo_Channels", function()
+
+
+
+end)
+
+Tab:CreateButton("Agent", function()
+
+
+
+end)
+
+Tab:CreateButton("Yt AgentScriptor", function()
+
+
+
+end)
