@@ -1,0 +1,155 @@
+local player = game.Players.LocalPlayer
+
+local debounce = false
+local autofarm = false
+
+local speed = 1
+local doSpeed = false
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "🟣 script Hub🟣",
+	LoadingTitle = "[UPD] 🤑 Money Race",
+	LoadingSubtitle = "By Toledo",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "Scripts hub"
+	},
+	Discord = {
+		Enabled = true,
+		Invite = "ekbjZbHu", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+		RememberJoins = false -- Set this to false to make them join the discord every time they load it up
+	},
+	KeySystem = false, -- Set this to true to use our key system
+	KeySettings = {
+		Title = " Scripts Hub",
+		Subtitle = "Key System",
+		Note = "Key In Discord Server: https://discord.gg/ekbjZbHu",
+		FileName = "YoutubeHubKey1", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = {"https://discord.gg/ekbjZbHu"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+	}
+})
+
+local MainTab = Window:CreateTab("📜 Scripts", nil) -- Title, Image
+Rayfield:Notify({
+	Title = "You executed the script",
+	Content = "Thank you so much for using my script!",
+	Duration = 5,
+	Image = 13047715178,
+	Actions = { -- Notification Buttons
+		Ignore = {
+			Name = "Okay!",
+			Callback = function()
+				print("The user tapped Okay!")
+			end
+		},
+	},
+})
+
+
+local Slider = MainTab:CreateSlider({
+	Name = "WalkSpeed Slider",
+	Range = {1, 500},
+	Increment = 1,
+	Suffix = "Speed",
+	CurrentValue = 16,
+	Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		speed = (Value)
+	end,
+})
+function onSpeed()
+
+	if doSpeed == true then
+
+		if player.Character then player.Character.Humanoid.WalkSpeed = speed end	
+
+	end
+
+end
+
+
+local Toggle = MainTab:CreateToggle({
+	Name = "Toggle Speed",
+	CurrentValue = false,
+	Flag = "Toggle1",
+	Callback = function(Value)
+		doSpeed = Value
+
+	end,
+})
+function autoFarm()
+
+	if autofarm and debounce == false then
+
+		debounce = true
+
+		local orbs = workspace.Camera.Orbs:GetChildren()
+		
+		
+		if #orbs >= 5 then
+			
+			local randomIndex = math.random(1, #orbs)
+			local randomOrb = orbs[randomIndex]
+
+
+
+			randomOrb.Orb.Enabled = false
+			if game.Players.LocalPlayer.Character then 
+				randomOrb.CanCollide = false
+				randomOrb.Position = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+				wait()
+			end
+			
+		end
+		
+		debounce = false
+
+	end
+
+end
+local Toggle = MainTab:CreateToggle({
+	Name = "Auto Farm",
+	CurrentValue = false,
+	Flag = "Toggle1",
+	Callback = function(Value)
+		autofarm = Value
+
+	end,
+})
+local CreditsTab = Window:CreateTab("👤 Credits", nil) -- Title, Image
+local Button = CreditsTab:CreateButton({
+	Name = "Official Banana",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Rabbid Bojo",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "AgentScriptor",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Script made by Toledo_Channels",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Discord: https://discord.gg/nVzscMyQ",
+	Callback = function()
+	end,
+})
+
+while wait() do
+
+	onSpeed()
+
+end
