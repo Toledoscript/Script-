@@ -7,7 +7,7 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
 	Name = "🟣Script Hub🟣",
-	LoadingTitle = "🏁 Math Race 🔢",
+	LoadingTitle = "🏁 Math block run🔢",
 	LoadingSubtitle = "By Toledo",
 	ConfigurationSaving = {
 		Enabled = true,
