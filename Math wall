@@ -1,0 +1,246 @@
+local player = game.Players.LocalPlayer
+local plrStuff = player.PlayerStuff
+local gamepasses = plrStuff.Gamepasses
+local instantAnswerGamepass = gamepasses["Instant Answer"]
+
+local showAnswers = false
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+	Name = "🟣 Script Hub🟣",
+	LoadingTitle = "➕ Math Wall Simulator 🤓",
+	LoadingSubtitle = "By toledo",
+	ConfigurationSaving = {
+		Enabled = true,
+		FolderName = nil, -- Create a custom folder for your hub/game
+		FileName = "Math Wall Simulator Hub"
+	},
+	Discord = {
+		Enabled = true,
+		Invite = "ekbjZbHu", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+		RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+	},
+	KeySystem = false, -- Set this to true to use our key system
+	KeySettings = {
+		Title = "Script Hub",
+		Subtitle = "Key System",
+		Note = "Key In Discord Server: https://discord.gg/ekbjZbHu",
+		FileName = "Toledo_channels", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+		SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+		GrabKeyFromSite = true, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+		Key = {"https://discord.gg/ekbjZbHu"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+	}
+})
+
+local MainTab = Window:CreateTab("🏠 Home", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main")
+
+Rayfield:Notify({
+	Title = "You executed the script",
+	Content = "Thank you so much for using my script!",
+	Duration = 5,
+	Image = 13047715178,
+	Actions = { -- Notification Buttons
+		Ignore = {
+			Name = "Okay!",
+			Callback = function()
+				print("The user tapped Okay!")
+			end
+		},
+	},
+})
+
+local Button = MainTab:CreateButton({
+	Name = "Infinite Jump Toggle",
+	Callback = function()
+		--Toggles the infinite jump between on or off on every script run
+		_G.infinjump = not _G.infinjump
+
+		if _G.infinJumpStarted == nil then
+			--Ensures this only runs once to save resources
+			_G.infinJumpStarted = true
+
+			--Notifies readiness
+			game.StarterGui:SetCore("SendNotification", {Title="Youtube Hub"; Text="Infinite Jump Activated!"; Duration=5;})
+
+			--The actual infinite jump
+			local plr = game:GetService('Players').LocalPlayer
+			local m = plr:GetMouse()
+			m.KeyDown:connect(function(k)
+				if _G.infinjump then
+					if k:byte() == 32 then
+						local humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+						humanoid:ChangeState('Jumping')
+						wait()
+						humanoid:ChangeState('Seated')
+					end
+				end
+			end)
+		end
+	end,
+})
+
+local Slider = MainTab:CreateSlider({
+	Name = "WalkSpeed Slider",
+	Range = {1, 250},
+	Increment = 1,
+	Suffix = "Speed",
+	CurrentValue = 16,
+	Flag = "sliderws", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+	end,
+})
+
+local Slider = MainTab:CreateSlider({
+	Name = "JumpPower Slider",
+	Range = {1, 250},
+	Increment = 1,
+	Suffix = "Speed",
+	CurrentValue = 16,
+	Flag = "sliderjp", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+	Callback = function(Value)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+	end,
+})
+
+local Input = MainTab:CreateInput({
+	Name = "Walkspeed",
+	PlaceholderText = "1-500",
+	RemoveTextAfterFocusLost = true,
+	Callback = function(Text)
+		game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Text)
+	end,
+})
+
+local Input = MainTab:CreateInput({
+	Name = "JumpPower",
+	PlaceholderText = "1-500",
+	RemoveTextAfterFocusLost = true,
+	Callback = function(Text)
+		game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Text)
+	end,
+})
+
+local MiscTab = Window:CreateTab("🎲 Misc", nil) -- Title, Image
+
+local Button = MiscTab:CreateButton({
+	Name = "Toggle Answers",
+	Callback = function()
+		-- Toggle the state of showing answers
+		local player = game.Players.LocalPlayer
+
+		local answerGui = player.PlayerGui.Answers
+		local character = player.Character or player.CharacterAdded:Wait()
+		local hrp = character:WaitForChild("HumanoidRootPart") -- Centralna część gracza, do obliczania odległości
+
+		local walls = workspace.Map.Game.Rows -- Zmieniamy lokalizację na odpowiednią, gdzie są ściany
+		local closestWall = nil
+		local minDistance = math.huge -- Na początku ustalamy bardzo dużą odległość, aby sprawdzić, która ściana jest bliżej
+
+		local function findClosestWall()
+			for _, wall in pairs(walls:GetChildren()) do
+				-- Dla każdego elementu w ścianie (zakładam, że "wall" to Model)
+				for _, part in pairs(wall:GetChildren()) do
+					-- Sprawdzenie odległości od "HumanoidRootPart" gracza do każdego elementu ściany
+					local distance = (hrp.Position - part.Position).Magnitude
+					if distance < minDistance and part.Data.Passed.Value == false then
+						minDistance = distance
+						closestWall = part -- Zapisujemy najbliższy element ściany
+
+						local data = closestWall:FindFirstChild("Data")
+
+						if data then
+
+							-- Sprawdzamy, czy istnieje obiekt "Data"
+
+							local answer = data.Answer.Value
+
+							local answersTabGui = {answerGui.Main.Answers["1"], answerGui.Main.Answers["2"], answerGui.Main.Answers["3"], answerGui.Main.Answers["4"]}
+
+							for i,v in ipairs(answersTabGui) do
+
+
+								if tonumber(v.Amount.Text) == answer then
+
+									v.UIScale.Scale = 1
+
+								else
+
+									v.UIScale.Scale = 0
+
+								end
+
+							end
+
+							local answersTab = {closestWall.Gui.Main.Answers["1"], closestWall.Gui.Main.Answers["2"], closestWall.Gui.Main.Answers["3"], closestWall.Gui.Main.Answers["4"]}
+
+							for i,v in ipairs(answersTab) do
+
+								if tonumber(v.Amount.Text) == answer then
+
+									v.UIScale.Scale = 1
+
+								else
+
+									v.UIScale.Scale = 0
+
+								end
+
+							end
+
+						end
+
+
+					end
+				end
+			end
+
+		end
+
+		-- Ustawienie pętli, która ciągle monitoruje pozycję gracza
+		game:GetService("RunService").Heartbeat:Connect(function()
+			-- Resetujemy zmienne
+			closestWall = nil
+			minDistance = math.huge
+
+			findClosestWall() -- Znajdujemy najbliższy element
+		end)
+
+	end,
+})
+
+local Button = MiscTab:CreateButton({
+	Name = "Instant Answer Toggle",
+	Callback = function()
+		instantAnswerGamepass.Value = not instantAnswerGamepass.Value
+	end,
+})
+
+local CreditsTab = Window:CreateTab("👤 Credits", nil) -- Title, Image
+local Button = CreditsTab:CreateButton({
+	Name = "Official Banana",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Rabbid Bojo",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Agentscriptor",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Script made by Toledo_channels 😁",
+	Callback = function()
+	end,
+})
+local Button = CreditsTab:CreateButton({
+	Name = "Discord: https://discord.gg/XKzG6TAV",
+	Callback = function()
+	end,
+})
