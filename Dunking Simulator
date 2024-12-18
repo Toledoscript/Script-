@@ -1,0 +1,370 @@
+local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
+
+local GUI = Mercury:Create{
+    Name = "Rice Hub | Dunking Simulator",
+    Size = UDim2.fromOffset(600, 400),
+    Theme = Mercury.Themes.Dark,
+    Link = "https://github.com/deeeity/mercury-lib"
+}
+
+GUI:Prompt{
+	Followup = false,
+	Title = "Thank you!",
+	Text = "Thank you for using script Hub!",
+	Buttons = {
+		Close = function()
+			return true
+		end
+	}
+}
+
+GUI:Notification{
+	Title = "Alert",
+	Text = "Please note that Script Hub is in Alpha stages, so bugs may appear!",
+	Duration = 3,
+	Callback = function() end
+}
+
+local Tab = GUI:Tab{
+    Name = "Autofarms",
+    Icon = "rbxassetid://7733970318"
+}
+
+Tab:Toggle{
+    Name = "Auto Rebirth",
+    StartingState = false,
+    Description = "Very laggy but very op!",
+    Callback = function(state) 
+        while true do
+            local ohInstance1 = game:GetService("Players").LocalPlayer.ownedShoes["2"]
+            local ohNumber2 = 0
+            local ohNumber3 = math.huge
+            game:GetService("ReplicatedStorage").Remote.Shoes.SellShoes:FireServer(ohInstance1, ohNumber2, ohNumber3)
+            game:GetService("ReplicatedStorage").Rebirth:FireServer()
+            loadstring(game:HttpGet('https://raw.githubusercontent.com/Aidanman14/RiceHub/extras/fix', true))()
+            wait(0.1)
+            end
+    end
+}
+
+Tab:Toggle{
+    Name = "Auto Season Pass",
+    StartingState = false,
+    Description = "Very slow",
+    Callback = function(state) 
+        while true do
+local ohString1 = "WildSeasonalCash"
+
+game:GetService("ReplicatedStorage").Remote.Orb.OrbScore:FireServer(ohString1)
+            wait(0.1)
+            end
+    end
+}
+
+Tab:Toggle{
+    Name = "Auto 2x cash boosts farm",
+    StartingState = false,
+    Description = "Very slow",
+    Callback = function(state) 
+        while true do 
+            local ohString1 = "2xCash"
+            local ohBoolean2 = true
+            
+            game:GetService("ReplicatedStorage").Remote.DailySpin.AddToInventory:FireServer(ohString1, ohBoolean2)
+            wait(0.1)
+            end
+    end
+}
+
+Tab:Toggle{
+    Name = "Auto 5x cash boosts farm",
+    StartingState = false,
+    Description = "Very slow",
+    Callback = function(state) 
+        while true do 
+            local ohString1 = "5xCash"
+            local ohBoolean2 = true
+            
+            game:GetService("ReplicatedStorage").Remote.DailySpin.AddToInventory:FireServer(ohString1, ohBoolean2)
+            wait(0.1)
+            end
+    end
+}
+
+Tab:Toggle{
+    Name = "Auto 50x cash boosts farm",
+    StartingState = false,
+    Description = "Very slow",
+    Callback = function(state) 
+        while true do 
+            local ohString1 = "50xCash"
+            local ohBoolean2 = true
+            
+            game:GetService("ReplicatedStorage").Remote.DailySpin.AddToInventory:FireServer(ohString1, ohBoolean2)
+            wait(0.1)
+            end
+    end
+}
+
+Tab:Toggle{
+    Name = "Auto 100x cash boosts farm",
+    StartingState = false,
+    Description = "Very slow",
+    Callback = function(state) 
+        while true do 
+            local ohString1 = "100xCash"
+            local ohBoolean2 = true
+            
+            game:GetService("ReplicatedStorage").Remote.DailySpin.AddToInventory:FireServer(ohString1, ohBoolean2)
+            wait(0.1)
+            end
+    end
+}
+
+Tab:Toggle{
+    Name = "Auto 1000x cash boosts farm",
+    StartingState = false,
+    Description = "Very slow",
+    Callback = function(state) 
+        while true do 
+            local ohString1 = "1000xCash"
+            local ohBoolean2 = true
+            
+            game:GetService("ReplicatedStorage").Remote.DailySpin.AddToInventory:FireServer(ohString1, ohBoolean2)
+            wait(0.1)
+            end
+    end
+}
+
+local Tab = GUI:Tab{
+    Name = "Misc",
+    Icon = "rbxassetid://7733952287"
+}
+
+Tab:Toggle{
+    Name = "x50 cash",
+    StartingState = false,
+    Description = "x50 cash",
+    Callback = function(state) 
+        while true do
+
+            local ohBoolean1 = true
+            
+            game:GetService("ReplicatedStorage").OnFire:FireServer(ohBoolean1)
+            
+            wait(1)
+            end
+    end
+}
+
+Tab:Toggle{
+    Name = "Green",
+    StartingState = false,
+    Description = "More 100 chances",
+    Callback = function(state) 
+        while true do
+
+            local ohBoolean1 = true
+            
+            game:GetService("ReplicatedStorage").OnFire:FireServer(ohBoolean1)
+            
+            wait(1)
+            end
+    end
+}
+
+Tab:Button{
+    Name = "Inf spins",
+    Description = "Inf spins",
+    Callback = function() 
+    
+
+        local ohNumber1 = math.huge
+        local ohNumber2 = 1662054441
+        
+        game:GetService("ReplicatedStorage").Remote.DailySpin.SpinEvent:FireServer(ohNumber1, ohNumber2)
+
+    end
+}
+
+Tab:Button{
+    Name = "Inf cash",
+    Description = "Inf money, very op!",
+    Callback = function() 
+    
+
+        local ohInstance1 = game:GetService("Players").LocalPlayer.ownedShoes["2"]
+local ohNumber2 = 0
+local ohNumber3 = math.huge
+game:GetService("ReplicatedStorage").Remote.Shoes.SellShoes:FireServer(ohInstance1, ohNumber2, ohNumber3)
+
+    end
+}
+
+Tab:Button{
+
+    Name = "Redeem all codes",
+    Description = "Redeems every single code",
+    Callback = function() 
+
+
+
+
+
+    local A_1 = "2KMISSED"
+    local Event = game:GetService("ReplicatedStorage").UseCode
+    Event:InvokeServer(A_1)
+    
+    --------------------------------------------------------------------------
+    local A_1 = "10KFLIER"
+    local Event = game:GetService("ReplicatedStorage").UseCode
+    Event:InvokeServer(A_1)
+    
+    
+    --------------------------------------------------------------------------	
+    local A_1 = "MOREDUNKS10K"
+    local Event = game:GetService("ReplicatedStorage").UseCode
+    Event:InvokeServer(A_1)
+    
+    --------------------------------------------------------------------------
+    
+    local A_1 = "LIBERTY"
+    local Event = game:GetService("ReplicatedStorage").UseCode
+    Event:InvokeServer(A_1)
+    
+    --------------------------------------------------------------------------
+    local A_1 = "XBOX"
+    local Event = game:GetService("ReplicatedStorage").UseCode
+    Event:InvokeServer(A_1)
+    
+    --------------------------------------------------------------------------	
+    local A_1 = "2xCash"
+    local Event = game:GetService("ReplicatedStorage").UseCode
+    Event:InvokeServer(A_1)
+    
+    --------------------------------------------------------------------------
+    local A_1 = "onfire"
+    local Event = game:GetService("ReplicatedStorage").UseCode
+    Event:InvokeServer(A_1)
+    
+    
+    --------------------------------------------------------------------------
+    local A_1 = "TYSMFORSubs"
+    local Event = game:GetService("ReplicatedStorage").UseCode
+    Event:InvokeServer(A_1)
+
+    end
+}
+
+
+
+
+
+
+local Tab = GUI:Tab{
+    Name = "Unlocks",
+    Icon = "rbxassetid://7743875263"
+}
+
+Tab:Button{
+    Name = "Unlock shoes",
+    Description = "Unlock 42 shoes",
+    Callback = function() 
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(1)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(2)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(3)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(4)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(5)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(6)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(7)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(8)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(9)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(10)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(11)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(12)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(13)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(14)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(15)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(16)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(17)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(18)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(19)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(20)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(21)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(22)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(23)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(24)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(25)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(26)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(27)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(28)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(29)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(30)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(31)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(32)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(33)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(34)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(35)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(36)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(37)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(38)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(39)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(40)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(41)
+        game:GetService("ReplicatedStorage").Remote.Shoes.QuestReward:FireServer(42)
+    end
+}
+
+Tab:Button{
+    Name = "Unlock all badges",
+    Description = "Even event ones",
+    Callback = function() 
+        local ohNumber1 = 2125130804
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2125130810
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2125130812
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2125747688
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2127210306
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2127210319
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2127210328
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2127480708
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2127480711
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+
+local ohNumber1 = 2127480712
+
+game:GetService("ReplicatedStorage").AwardBadge:FireServer(ohNumber1)
+    end
+}
+
+
+GUI:Credit{
+    Name = "ScriptHub🟣",
+    Description = "Owner of the script",
+    V3rm = "Nil",
+    Discord = "https://discord.gg/c9swsPdw"
+}
