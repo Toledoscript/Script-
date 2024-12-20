@@ -1,0 +1,61 @@
+local Library = loadstring(Game:HttpGet("https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wizard"))()
+
+local Window = Library:NewWindow("Make And Sell Car")
+
+local Tab = Window:NewSection("Main")
+
+Tab:CreateButton("Inf Materials", function()
+
+game:GetService("ReplicatedStorage").Event.Train:FireServer(math.huge)
+
+end)
+
+Tab:CreateButton("Inf Car Parts", function()
+
+game:GetService("ReplicatedStorage").Event.CraftWeapon:FireServer("Lawnmower",math.huge)
+
+end)
+
+Tab:CreateButton("Inf money", function()
+
+game:GetService("ReplicatedStorage").Event.SellWeapon:FireServer(math.huge,1)
+
+end)
+
+Tab:CreateButton("Get Bugatti", function()
+
+game:GetService("ReplicatedStorage").Event.BuyPower:FireServer("Bugti",0)
+
+end)
+
+Tab:CreateButton("Get Hurricane", function()
+
+game:GetService("ReplicatedStorage").Event.BuyPower:FireServer("Huracane",0)
+
+end)
+
+local Tab = Window:NewSection("Cridets")
+
+Tab:CreateButton("Toledo_Channels", function()
+
+
+
+end)
+
+Tab:CreateButton("RABBID BOJO", function()
+
+
+
+end)
+
+Tab:CreateButton("AgentScriptor", function()
+
+
+
+end)
+
+Tab:CreateButton("Official Banana", function()
+
+
+
+end)
